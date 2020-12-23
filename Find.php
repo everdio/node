@@ -4,7 +4,7 @@ namespace Modules\Node {
         public function __construct(string $xpath, array $validations = [], string $wrap = "%s") {
             $xparts = $parts = explode(DIRECTORY_SEPARATOR, preg_replace('/\[(.*?)\]/', false, $xpath));
             foreach ($validations as $validation) {
-                if ($validation instanceof Filter && $validation->isValid()) {    
+                if ($validation instanceof \Components\Validation && $validation->isValid()) {    
                     if (array_key_exists(($last = array_key_last(array_intersect(($fparts = explode(DIRECTORY_SEPARATOR, ($fpath = preg_replace('/\[(.*?)\]/', false, ($validation = $validation->execute()))))), $parts))), $xparts)) {
                         $validation = str_replace($fpath, false, $validation);
                         if (!sizeof(array_diff($fparts, $parts))) {    
