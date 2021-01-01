@@ -6,7 +6,7 @@ namespace Modules\Node {
             if (isset($node->mapping) || isset($node->{$node->tag})) {
                 if (isset($node->mapping)) {
                     foreach ($node->restore($node->mapping) as $parameter => $value) {
-                        if (isset($node->{$parameter}) && !$node->get($parameter)->hasType(Validator\IsEmpty::TYPE)) {
+                        if (isset($node->{$parameter}) && !$node->get($parameter)->hasTypes([Validator\IsEmpty::TYPE])) {
                             $conditions[] = sprintf($wrap, $node->getField($parameter), $expression, $value);
                         }
                     }                    
