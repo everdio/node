@@ -3,7 +3,7 @@ $dom = new \DOMDocument;
 $dom->load($this->model["document"], LIBXML_HTML_NOIMPLIED | LIBXML_NOCDATA | LIBXML_NOERROR | LIBXML_NONET | LIBXML_NOWARNING);
 $xpath = new \DOMXPath($dom);
 foreach ($xpath->query("//*") as $node) {
-    $model = new \Modules\Node\Html\Model;
+    $model = new \Modules\Node\Xml\Model;
     $model->document = $dom->documentURI;
     $model->node = $node;
     $model->namespace = $this->model["namespace"];
