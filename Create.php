@@ -3,12 +3,11 @@ namespace Modules\Node {
     use \Components\Validator;
     final class Create extends \Components\Validation {
         public function __construct(\Components\Core $mapper) {
-            $node = (isset($mapper->current) ? $mapper->xpath($mapper->current)->item(0) : $mapper->createElement(strtolower($mapper->tag)));
+            $node = (isset($mapper->current) ? $mapper->xpath($mapper->current)->item(0) : $mapper->createElement(strtolower($mapper->label)));
             
-            if (isset($mapper->{$mapper->tag})) {        
+            if (isset($mapper->{$mapper->label})) {        
                 $node->nodeValue = false;
-
-                $node->appendChild($mapper->createCDATASection($mapper->{$mapper->tag}));
+                $node->appendChild($mapper->createCDATASection($mapper->{$mapper->label}));
             }
             
             if (isset($mapper->mapping)) {

@@ -9,7 +9,7 @@ namespace Modules\Node {
                 }
             }
 
-            parent::__construct((sizeof($query) ? sprintf("%s[%s]", $xpath, implode(sprintf(" %s ", $operator), $query)) : $xpath), [new Validator\IsString\Contains(["@", "contains", "text", "=", ">", "<", "!=", "and", "or", "min", "max", "last", "first"])]);
+            parent::__construct((sizeof($query) ? sprintf("%s[%s]", $xpath, implode(sprintf(" %s ", $operator), $query)) : $xpath), [new Validator\NotEmpty]);
         }
     }
 }

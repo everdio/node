@@ -5,7 +5,7 @@ namespace Modules\Node {
         public function __construct(\Components\Core $mapper, \DOMElement $node) {
             $mapper->current = $node->getNodePath();          
             $mapper->parent = $node->parentNode->getNodePath();                            
-            $mapper->{$mapper->tag} = trim($node->nodeValue);           
+            $mapper->{$mapper->label} = trim($node->nodeValue);           
             if (isset($mapper->mapping)) {                
                 foreach ($mapper->mapping as $attribute => $parameter) {
                     if ($mapper->exists($parameter)) {
