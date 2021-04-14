@@ -1,8 +1,8 @@
 <?php
 namespace Modules\Node {
-    use \Components\Validator;
-    final class Map extends \Components\Validation {
-        public function __construct(\Components\Core $mapper, \DOMElement $node) {
+    use \Component\Validator;
+    final class Map extends \Component\Validation {
+        public function __construct(\Component\Core $mapper, \DOMElement $node) {
             $mapper->current = $node->getNodePath();          
             $mapper->parent = $node->parentNode->getNodePath();                            
             $mapper->{$mapper->label} = trim($node->nodeValue);           
@@ -14,7 +14,7 @@ namespace Modules\Node {
                 }
             }
             
-            parent::__construct($mapper, [new Validator\IsObject\Of("\Components\Core")]);
+            parent::__construct($mapper, [new Validator\IsObject\Of("\Component\Core")]);
         }
     }
 }

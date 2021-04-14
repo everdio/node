@@ -1,8 +1,8 @@
 <?php
 namespace Modules\Node {
-    use Components\Validator;
-    use Components\Validation;
-    abstract class Model extends \Components\Core\Adapter\Mapper\Model {
+    use Component\Validator;
+    use Component\Validation;
+    abstract class Model extends \Component\Core\Adapter\Mapper\Model {
         use \Modules\Node;
         public function __construct(array $parameters = []) {
             parent::__construct([
@@ -29,8 +29,8 @@ namespace Modules\Node {
             
             if ($this->node->hasAttributes()) {
                 foreach ($this->node->attributes as $attribute) {
-                    $parameter = new \Components\Validation\Parameter($this->labelize($attribute->nodeName), (!empty(trim($attribute->value)) ? trim($attribute->value) : false), false, true);
-                    $this->add((string) $parameter, $parameter->getValidation($parameter->getValidators()));
+                    $parameter = new \Component\Validation\Parameter((!empty(trim($attribute->value)) ? trim($attribute->value) : false), false, true);
+                    $this->add($this->labelize($attribute->nodeName), $parameter->getValidation($parameter->getValidators()));
                     $this->mapping = [$attribute->nodeName => (string) $parameter];
                 }            
             }           

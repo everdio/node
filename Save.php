@@ -1,8 +1,8 @@
 <?php
 namespace Modules\Node {
-    use \Components\Validator;
-    final class Save extends \Components\Validation {
-        public function __construct(\Components\Core $mapper) {
+    use \Component\Validator;
+    final class Save extends \Component\Validation {
+        public function __construct(\Component\Core $mapper) {
             $create = new Create($mapper);
             $node = $create->execute();
             if (!isset($mapper->current) && isset($mapper->parent)) {      

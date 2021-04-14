@@ -1,8 +1,8 @@
 <?php
 namespace Modules\Node {
-    use \Components\Validator;
-    final class Condition extends \Components\Validation {
-        public function __construct(\Components\Core $node, string $operator = "and", string $expression = "=", string $match = "text()=\"%s\"", $wrap = "@%s %s \"%s\"", array $conditions = []) {
+    use \Component\Validator;
+    final class Condition extends \Component\Validation {
+        public function __construct(\Component\Core $node, string $operator = "and", string $expression = "=", string $match = "text()=\"%s\"", $wrap = "@%s %s \"%s\"", array $conditions = []) {
             if (isset($node->mapping) || isset($node->{$node->label})) {
                 if (isset($node->mapping)) {
                     foreach ($node->restore($node->mapping) as $parameter => $value) {

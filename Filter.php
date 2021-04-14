@@ -1,10 +1,10 @@
 <?php
 namespace Modules\Node {
-    use \Components\Validator;
-    final class Filter extends \Components\Validation {
+    use \Component\Validator;
+    final class Filter extends \Component\Validation {
         public function __construct(string $xpath, array $conditions = [], string $operator = "and", array $query = []) {
             foreach ($conditions as $condition) {
-                if (($condition instanceof \Components\Validation && $condition->isValid())) {
+                if (($condition instanceof \Component\Validation && $condition->isValid())) {
                     $query[] = $condition->execute();
                 }
             }
