@@ -15,7 +15,7 @@ namespace Modules\Node {
             ] + $parameters);
         }
         
-        public function setup() {
+        public function setup() : void {
             $this->path = preg_replace('/\[(.*?)\]/', false, $this->node->getNodePath());  
             $this->label = ucFirst(strtolower($this->node->tagName));
             $this->class = ucFirst(strtolower($this->node->tagName));
@@ -31,7 +31,7 @@ namespace Modules\Node {
                 foreach ($this->node->attributes as $attribute) {
                     $parameter = new \Component\Validation\Parameter((!empty(trim($attribute->value)) ? trim($attribute->value) : false), false, true);
                     $this->add($this->labelize($attribute->nodeName), $parameter->getValidation($parameter->getValidators()));
-                    $this->mapping = [$attribute->nodeName => (string) $parameter];
+                    $this->mapping = [$attribute->nodeName => $this->labelize($attribute->nodeName)];
                 }            
             }           
             

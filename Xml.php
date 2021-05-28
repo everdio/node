@@ -2,16 +2,14 @@
 namespace Modules\Node {
     trait Xml {
         use \Modules\Node;
-        protected function initialise() {
-            if (!$this->hadAdapter($this->unique(["document"]))) {
+        protected function initialize() {
+            if (!\array_key_exists($this->document, self::$adapters)) {
                 $dom = new \DOMDocument;
-                $dom->preserveWhiteSpace = false;
-                $dom->load($this->document, LIBXML_HTML_NOIMPLIED | LIBXML_NOCDATA | LIBXML_NOERROR | LIBXML_NONET | LIBXML_NOWARNING);                 
-                
-                $this->addAdapter($this->unique(["document"]), $dom);
+                $dom->load($this->document, LIBXML_HTML_NOIMPLIED | LIBXML_NOCDATA | LIBXML_NOERROR | LIBXML_NONET | LIBXML_NOWARNING);
+                self::$adapters[$this->document] = $dom;
             }
             
-            return (object) $this->getAdapter($this->unique(["document"]));
-        }        
+            return (object) self::$adapters[$this->document];
+        }             
     }
 }

@@ -1,6 +1,6 @@
 <?php
 $dom = new \DOMDocument;
-$dom->loadHTMLFile($this->model["document"], LIBXML_HTML_NOIMPLIED | LIBXML_NOCDATA | LIBXML_NOERROR | LIBXML_NONET | LIBXML_NOWARNING);
+$dom->loadHTMLFile($this->model["document"],LIBXML_HTML_NODEFDTD | LIBXML_HTML_NOIMPLIED | LIBXML_NOCDATA | LIBXML_NOERROR | LIBXML_NONET | LIBXML_NOWARNING);
 $xpath = new \DOMXPath($dom);
 foreach ($xpath->query("//*") as $node) {
     $model = new \Modules\Node\Html\Model;

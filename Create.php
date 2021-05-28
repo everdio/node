@@ -3,7 +3,7 @@ namespace Modules\Node {
     use \Component\Validator;
     final class Create extends \Component\Validation {
         public function __construct(\Component\Core $mapper) {
-            $node = (isset($mapper->current) ? $mapper->xpath($mapper->current)->item(0) : $mapper->createElement(strtolower($mapper->label)));
+            $node = (isset($mapper->current) ? $mapper->fetch($mapper->current)->item(0) : $mapper->createElement(strtolower($mapper->label)));
             
             if (isset($mapper->{$mapper->label})) {        
                 $node->nodeValue = false;
