@@ -16,20 +16,20 @@ namespace Modules\Node {
         }
         
         public function setup() : void {
-            $this->path = preg_replace('/\[(.*?)\]/', false, $this->node->getNodePath());  
-            $this->label = ucFirst(strtolower($this->node->tagName));
-            $this->class = ucFirst(strtolower($this->node->tagName));
+            $this->path = \preg_replace('/\[(.*?)\]/', false, $this->node->getNodePath());  
+            $this->label = \ucFirst(\strtolower($this->node->tagName));
+            $this->class = \ucFirst(\strtolower($this->node->tagName));
             $this->tag = $this->node->tagName;
             $this->primary = ["current" => "current"];
             $this->keys = ["parent" => "parent"];
             
             if (isset($this->namespace) && $this->node->parentNode->nodeName !== "#document") {
-                $this->namespace = $this->namespace . implode("\\", array_map("ucFirst", explode(DIRECTORY_SEPARATOR, dirname($this->path))));
+                $this->namespace = $this->namespace . \implode("\\", \array_map("ucFirst", \explode(\DIRECTORY_SEPARATOR, \dirname($this->path))));
             }    
             
             if ($this->node->hasAttributes()) {
                 foreach ($this->node->attributes as $attribute) {
-                    $parameter = new \Component\Validation\Parameter((!empty(trim($attribute->value)) ? trim($attribute->value) : false), false, true);
+                    $parameter = new \Component\Validation\Parameter((!empty(\trim($attribute->value)) ? \trim($attribute->value) : false), false, true);
                     $this->add($this->labelize($attribute->nodeName), $parameter->getValidation($parameter->getValidators()));
                     $this->mapping = [$attribute->nodeName => $this->labelize($attribute->nodeName)];
                 }            

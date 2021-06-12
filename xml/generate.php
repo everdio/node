@@ -1,8 +1,8 @@
 <?php
 $dom = new \DOMDocument("1.0", "UTF-8");
-$dom->load($this->model["document"], LIBXML_HTML_NOIMPLIED | LIBXML_NOCDATA | LIBXML_NOERROR | LIBXML_NONET | LIBXML_NOWARNING);
 $dom->preserveWhiteSpace = false;
 $dom->formatOutput = false;
+$dom->load($this->model["document"], LIBXML_HTML_NOIMPLIED | LIBXML_NOCDATA | LIBXML_NOERROR | LIBXML_NONET | LIBXML_NOWARNING);
 
 $xpath = new \DOMXPath($dom);
 

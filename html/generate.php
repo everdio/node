@@ -1,8 +1,8 @@
 <?php
 $dom = new \DOMDocument("1.0", "UTF-8");
-$dom->loadHTMLFile($this->model["document"], LIBXML_HTML_NODEFDTD | LIBXML_HTML_NOIMPLIED | LIBXML_NOCDATA | LIBXML_NOERROR | LIBXML_NONET | LIBXML_NOWARNING);
 $dom->preserveWhiteSpace = false;
 $dom->formatOutput = false;
+$dom->loadHTMLFile($this->model["document"], LIBXML_HTML_NODEFDTD | LIBXML_HTML_NOIMPLIED | LIBXML_NOCDATA | LIBXML_NOERROR | LIBXML_NONET | LIBXML_NOWARNING);
 
 $xpath = new \DOMXPath($dom);
 foreach ($xpath->query("//*") as $node) {
